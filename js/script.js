@@ -49,6 +49,7 @@ function findHeight() {
 }
 
 function animation() {
+    gsap.registerPlugin(ScrollTrigger);
     //метод .to от верстви к другой точке
     /*   gsap.to('.promo__text', {
           duration: 1,
@@ -78,7 +79,7 @@ function animation() {
          delay: 1,
      }) */
 
-    const tlPromo = gsap.timeline({})
+    /* const tlPromo = gsap.timeline({})
     tlPromo.to('.promo__text', {
             duration: 1,
             xPercent: -50
@@ -86,5 +87,23 @@ function animation() {
         .to('.promo__text', {
             duration: 1,
             rotation: 360
-        }, '-=1') //выполнить 2функцию за 1сек до завершения 1//
+        }, '-=1') */ //выполнить 2функцию за 1сек до завершения 1//
+    gsap.set('.rates__card', {
+        opacity: 0
+    })
+    gsap.to('.rates__card', {
+        opacity: 1,
+        stagger: 0.1,
+        scrollTrigger: {
+            trigger: '.rates',
+            start: 'top top',
+            /* end: 'bottom top', */
+            end: '+-200',
+            scrub: true,
+            /*  pin: true, */
+            markers: true
+
+
+        }
+    })
 }
