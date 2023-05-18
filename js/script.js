@@ -88,7 +88,7 @@ function animation() {
             duration: 1,
             rotation: 360
         }, '-=1') */ //выполнить 2функцию за 1сек до завершения 1//
-    gsap.set('.rates__card', {
+    /* gsap.set('.rates__card', {
         opacity: 0
     })
     gsap.to('.rates__card', {
@@ -97,13 +97,42 @@ function animation() {
         scrollTrigger: {
             trigger: '.rates',
             start: 'top top',
-            /* end: 'bottom top', */
+            end: 'bottom top',
             end: '+-200',
             scrub: true,
-            /*  pin: true, */
+            pin: true,
             markers: true
 
 
         }
+}) */
+    const tlPromo = gsap.timeline({})
+
+    tlPromo.to('.promo__title span:first-child', {
+            duration: 1.2,
+            x: 0,
+            ease: "back.out(1.1)"
+        })
+        .to('.promo__title span:last-child', {
+            duration: 1.2,
+            x: 0,
+            ease: "back.out(1.1)"
+        }, '<')
+
+    const tlImages = gsap.timeline({
+        scrollTrigger: {
+            trigger: '.promo',
+            start: 'top top',
+            end: '+50%',
+            scrub: 1,
+            pin: true,
+            marckers: true
+        }
+    })
+
+    tlImages.from('.promo__bottom', {
+        duration: 1,
+        opacity: 0,
+        yPercent: 100
     })
 }
