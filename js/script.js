@@ -123,16 +123,30 @@ function animation() {
         scrollTrigger: {
             trigger: '.promo',
             start: 'top top',
-            end: '+50%',
+            end: '+=50%',
             scrub: 1,
-            pin: true,
-            marckers: true
+            pin: true
         }
     })
 
-    tlImages.from('.promo__bottom', {
-        duration: 1,
-        opacity: 0,
-        yPercent: 100
+    tlImages.to('.promo__bottom', {
+            opacity: 1,
+            y: 0
+        })
+        .fromTo('.promo__bottom img', { y: -80 }, { y: 40 }, '<')
+
+    const tlLines = gsap.timeline({
+        scrollTrigger: {
+            trigger: '.choose__wrap',
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: true
+        }
     })
+    tlLines.to('.choose__wrap .top', {
+            xPercent: -60,
+        })
+        .to('.choose__wrap .bottom', {
+            xPercent: 20
+        }, '<')
 }
