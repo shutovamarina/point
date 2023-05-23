@@ -157,8 +157,7 @@ function animation() {
         scrollTrigger: {
             trigger: '.rates',
             start: 'top 10%',
-            toggleActions: 'play none none reverse',
-            markers: true
+            toggleActions: 'play none none reverse'
         }
     })
 
@@ -176,4 +175,37 @@ function animation() {
             snap: 1 / (sections.length - 1)
         }
     })
+
+    const tlPoint = gsap.timeline({
+        scrollTrigger: {
+            trigger: '.point',
+            start: 'top center',
+            end: 'bottom bottom',
+            toggleActions: 'play reverse play reverse',
+        }
+    })
+    tlPoint.to('.point', {
+        backgroundColor: '#000'
+    })
+    tlPoint.to('.point__title', {
+        color: '#fff'
+    }, '<')
+    tlPoint.to('.point__descr', {
+        color: '#fff'
+    }, '<')
+
+    const tlImg = gsap.timeline({
+        scrollTrigger: {
+            trigger: '.point__wrapper',
+            start: 'top top',
+            pin: true,
+            scrub: 1
+        }
+    })
+    tlImg.to('.point__img:first-child img', {
+        scale: 1
+    })
+    tlImg.to('.point__img:last-child img', {
+        scale: 0
+    }, '<')
 }
