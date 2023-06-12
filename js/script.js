@@ -108,6 +108,16 @@ function animation() {
 }) */
 
     function animSmall() {
+        gsap.to('progress', {
+            value: 100,
+            ease: 'none',
+            scrollTrigger: {
+                trigger: 'body',
+                start: 'top top',
+                end: 'bottom bottom',
+                scrub: true
+            }
+        });
         const tlPromo = gsap.timeline({})
 
         tlPromo.to('.promo__title span:first-child', {
@@ -181,26 +191,19 @@ function animation() {
                 trigger: '.point',
                 start: 'top center',
                 end: '+=400',
-                toggleActions: 'play reverse play reverse',
+                toggleActions: 'play reverse play reverse'
             }
         })
-        tlPoint.to('.point', {
+        tlPoint.to('body', {
             backgroundColor: '#000',
-            /* scrollTrigger: {
-                trigger: '.point',
-                start: 'top top',
-                scrub: 1,
-                opacity: 3
-            } */
-
         })
 
-        tlPoint.to('.point__title', {
-            color: '#fff'
-        }, '<')
-        tlPoint.to('.point__descr', {
-            color: '#fff'
-        }, '<')
+        .to('.point__title', {
+                color: '#fff'
+            }, '<')
+            .to('.point__descr', {
+                color: '#fff'
+            }, '<')
 
         const tlImg = gsap.timeline({
             scrollTrigger: {
@@ -246,6 +249,9 @@ function animation() {
     }
 
     let mediaAnimation = gsap.matchMedia();
+
+
+
 
     mediaAnimation.add("(min-width: 1025px)", () => {
         const tlPromo = gsap.timeline({})
@@ -326,35 +332,21 @@ function animation() {
                 toggleActions: 'play reverse play reverse',
             }
         })
-        tlPoint.to('.point', {
-            /* backgroundColor: '#000', */
-            /* scrollTrigger: {
-                trigger: '.point',
-                start: "top 50%",
-                end: "bottom 0%"
-            } */
-            /*  scrollTrigger: {
-                 trigger: '.point',
-                 start: 'top 50%',
-                 end: 'bottom 0%',
-                 onEnter: () => gsap.to('point', {
-                     backgroundColor: color,
-                   duration: 2
-                 }),
-                 onLeave: () => gsap.to('point', {
-                     backgroundColor: '#000',
-                     duration: 2
-                 
-                 }) */
-
-        })
-
-        tlPoint.to('.point__title', {
-            color: '#fff'
-        }, '<')
-        tlPoint.to('.point__descr', {
-            color: '#fff'
-        }, '<')
+        tlPoint.to('body', {
+                backgroundColor: '#000',
+            })
+            .to('.plus-block__text', {
+                color: '#fff'
+            }, '<')
+            .to('.plus-block__title span:last-child', {
+                color: '#fff'
+            }, '<')
+            .to('.point__title', {
+                color: '#fff'
+            }, '<')
+            .to('.point__descr', {
+                color: '#fff'
+            }, '<')
 
         const tlImg = gsap.timeline({
             scrollTrigger: {
